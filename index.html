@@ -33,5 +33,26 @@
     <p>Segundo elemento de parrafo</p>
     <h1>¡HALA MADRID!</h1>
     <footer>Este es el pie de página ~ Año 2005</footer>
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const ojos = document.querySelectorAll(".ojo");
+
+        ojos.forEach((ojo) => {
+          const rect = ojo.getBoundingClientRect();
+          const xCentro = rect.left + rect.width / 2;
+          const yCentro = rect.top + rect.height / 2;
+
+          const angulo = Math.atan2(e.pageX - xCentro, e.pageY - yCentro);
+
+          // Distancia de movimiento
+          const radio = 5;
+          const x = Math.sin(angulo) * radio;
+          const y = Math.cos(angulo) * radio;
+
+          // Aplicar movimiento
+          ojo.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      });
+    </script>
   </body>
 </html>
